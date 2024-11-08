@@ -87,7 +87,9 @@
                             type="text"
                             name="data[fullName]"
                             class="form-control required"
-                            placeholder="Full Name" />
+                            placeholder="Full Name"
+                            pattern="[A-Za-z ]+"
+                            title="Name should not consist any numbers or special characters" />
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -96,7 +98,9 @@
                             type="text"
                             name="data[city]"
                             class="form-control required"
-                            placeholder="City" />
+                            placeholder="City"
+                            pattern="[A-Za-z ]+"
+                            title="City should not consist any numbers or special characters" />
                         </div>
                       </div>
                     </div>
@@ -109,7 +113,9 @@
                             type="email"
                             name="data[email]"
                             class="form-control required"
-                            placeholder="Email" />
+                            placeholder="Email"
+                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
+                            title="Email format is incorrect" />
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -118,7 +124,10 @@
                             type="text"
                             name="data[telephone]"
                             class="form-control"
-                            placeholder="Telephone" />
+                            placeholder="Phone No."
+                            maxlength="10"
+                            pattern="[0-9]+"
+                            title="Phone No. should not contain any alphabets or special characters" />
                         </div>
                       </div>
                     </div>
@@ -131,7 +140,10 @@
                             type="text"
                             name="data[age]"
                             class="form-control"
-                            placeholder="Age" />
+                            placeholder="Age"
+                            maxlength="2"
+                            pattern="[0-9]+"
+                            title="Only numbers are allowed" />
                         </div>
                       </div>
                       <div class="col-md-6">
@@ -156,7 +168,8 @@
                         name="terms"
                         type="checkbox"
                         class="icheck required"
-                        value="yes" />
+                        value="yes"
+                        required />
                       <label
                         >Please accept
                         <a
@@ -388,6 +401,12 @@
     <!-- SCRIPTS -->
     <!-- Jquery-->
     <script>
+      divElement = document.querySelector("#left_form");
+
+      elemHeight = divElement.offsetHeight;
+
+      console.log(elemHeight);
+
       function getParameterByName(name, url = window.location.href) {
         name = name.replace(/[\[\]]/g, "\\$&");
         const regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
