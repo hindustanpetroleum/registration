@@ -23,8 +23,11 @@
     background-image: url("../Mobile.jpg");
     text-align: left;
     padding: 30px;
-    min-height: 50vh;
+    /* min-height: 75vh;
+    min-width: 50%s; */
+    min-height: 100vh;
     background-repeat: no-repeat;
+    background-size: cover;
   }
   #left_form img {
     float: left;
