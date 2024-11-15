@@ -380,8 +380,8 @@ footer ul li a {
 }
 
 #left_form {
-  background-color: #000069;
-  min-height: 460px;
+  background-image: url("../offer-01.jpg");
+  min-height: 520px;
   color: #fff;
   text-align: center;
   padding: 70px 50px 30px 50px;
@@ -941,6 +941,10 @@ ul.contacts_info li:last-child {
   bottom: 0;
   background-color: #fff;
   z-index: 999999;
+}
+
+#location {
+  display: none;
 }
 
 [data-loader="circle-side"] {

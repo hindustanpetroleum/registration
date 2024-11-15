@@ -36,7 +36,7 @@
         <div class="row">
           <div class="col-lg-5">
             <div id="left_form">
-              <figure>
+              <!-- <figure>
                 <img
                   src="https://upload.wikimedia.org/wikipedia/hi/thumb/8/8c/Hindustan_Petroleum_Logo.svg/1611px-Hindustan_Petroleum_Logo.svg.png"
                   alt=""
@@ -58,7 +58,7 @@
                 data-bs-toggle="modal"
                 data-bs-target="#more-info"
                 ><i class="pe-7s-info"></i
-              ></a>
+              ></a> -->
             </div>
           </div>
           <div class="col-lg-7">
@@ -93,34 +93,10 @@
                             required />
                         </div>
                       </div>
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input
-                            type="text"
-                            name="data[city]"
-                            class="form-control required"
-                            placeholder="City"
-                            pattern="[A-Za-z ]+"
-                            title="City should not consist any numbers or special characters"
-                            required />
-                        </div>
-                      </div>
                     </div>
                     <!-- /row -->
 
                     <div class="row">
-                      <div class="col-md-6">
-                        <div class="form-group">
-                          <input
-                            type="email"
-                            name="data[email]"
-                            class="form-control required"
-                            placeholder="Email"
-                            pattern="[a-z0-9._%+\-]+@[a-z0-9.\-]+\.[a-z]{2,}$"
-                            title="Email format is incorrect"
-                            required />
-                        </div>
-                      </div>
                       <div class="col-md-6">
                         <div class="form-group">
                           <input
@@ -142,12 +118,12 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="data[age]"
+                            name="data[amount]"
                             class="form-control"
-                            placeholder="Age"
-                            maxlength="2"
+                            placeholder="Amount of fuel purchased (in ₹)"
+                            maxlength="5"
                             pattern="[0-9]+"
-                            title="Age should not contain any alphabets or special characters"
+                            title="Amount should not contain any alphabets or special characters"
                             required />
                         </div>
                       </div>
