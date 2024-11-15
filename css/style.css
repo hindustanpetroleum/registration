@@ -380,11 +380,11 @@ footer ul li a {
 }
 
 #left_form {
-  background-image: url("../offer-01.jpg");
-  min-height: 520px;
+  /* background-image: url("../offer-01.jpg"); */
+  /* min-height: 520px; */
   color: #fff;
   text-align: center;
-  padding: 70px 50px 30px 50px;
+  /* padding: 70px 50px 30px 50px; */
   box-sizing: border-box;
   position: relative;
 }
