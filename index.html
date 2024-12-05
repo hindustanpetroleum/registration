@@ -36,30 +36,6 @@
         <div class="row">
           <div class="col-lg-5">
             <div id="left_form">
-              <!-- <figure>
-                <img
-                  src="https://upload.wikimedia.org/wikipedia/hi/thumb/8/8c/Hindustan_Petroleum_Logo.svg/1611px-Hindustan_Petroleum_Logo.svg.png"
-                  alt=""
-                  width="150"
-                  height="200" />
-              </figure>
-              <h2>Registration</h2>
-              <h5 style="color: white; font-weight: 400">
-                Welcome to HP Petroleum's Mega Lucky Draw!
-              </h5>
-              <p>
-                Fill out the registration form below for a chance to win
-                exciting prizes. Every fuel-up gives you more chances to win, so
-                don’t miss out on this golden opportunity. Good luck! 🚀
-              </p>
-              <a
-                href="#0"
-                id="more_info"
-                data-bs-toggle="modal"
-                data-bs-target="#more-info"
-                ><i class="pe-7s-info"></i
-              ></a> -->
-
               <img
                 id="poster"
                 src="./offer-01.jpg"
@@ -73,11 +49,7 @@
                 <div id="progressbar"></div>
               </div>
               <!-- /top-wizard -->
-              <form
-                name="example-1"
-                id="sheetdb-form"
-                action="https://sheetdb.io/api/v1/d52xa70y34kgm"
-                method="POST">
+              <form name="example-1" id="sheetdb-form" action="" method="POST">
                 <input id="website" name="website" type="text" value="" />
                 <!-- Leave for security protection, read docs for details -->
                 <div id="middle-wizard">
@@ -91,7 +63,7 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="data[fullName]"
+                            name="fullName"
                             class="form-control required"
                             placeholder="Full Name"
                             pattern="[A-Za-z ]+"
@@ -107,7 +79,7 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="data[telephone]"
+                            name="telephone"
                             class="form-control"
                             placeholder="Phone No."
                             maxlength="10"
@@ -124,7 +96,7 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="data[amount]"
+                            name="amount"
                             class="form-control"
                             placeholder="Amount of fuel purchased (in ₹)"
                             maxlength="5"
@@ -140,7 +112,7 @@
                         <div class="form-group">
                           <input
                             type="text"
-                            name="data[transaction]"
+                            name="transaction"
                             class="form-control"
                             placeholder="Transaction No. / Bill No."
                             pattern="[0-9]+"
@@ -156,7 +128,7 @@
                           <input
                             type="text"
                             id="location"
-                            name="data[location]"
+                            name="location"
                             class="form-control"
                             placeholder="Location"
                             readonly
@@ -165,11 +137,11 @@
                       </div>
                     </div>
 
-                                        <div class="row">
+                    <div class="row">
                       <div class="col-md-6">
                         <div class="form-group">
                           <label for="pumpName">Choose your location:</label>
-                          <select name="data[pumpName]" id="pumpName">
+                          <select name="pumpName" id="pumpName">
                             <option value="gomti-nagar-lucknow">
                               GOMTI NAGAR, LUCKNOW
                             </option>
@@ -245,6 +217,9 @@
                 </div>
                 <!-- /bottom-wizard -->
               </form>
+              <div>
+                <div id="processing" style="display: none" class="loader"></div>
+              </div>
             </div>
             <!-- /Wizard container -->
           </div>
@@ -453,11 +428,8 @@
     <!-- SCRIPTS -->
     <!-- Jquery-->
     <script>
-      divElement = document.querySelector("#left_form");
-
-      elemHeight = divElement.offsetHeight;
-
-      console.log(elemHeight);
+      const scriptURL =
+        "https://script.google.com/macros/s/AKfycbzfuz1Db2G930g8iEB4TqAmaHi_X68AA9_ngbUBHmv1WWxPGpRwGTFm7L_LJO4s2g30Jg/exec";
 
       function getParameterByName(name, url = window.location.href) {
         name = name.replace(/[\[\]]/g, "\\$&");
@@ -472,16 +444,29 @@
         getParameterByName("location") || "";
 
       var form = document.getElementById("sheetdb-form");
+      const processingDiv = document.getElementById("processing");
+
       form.addEventListener("submit", (e) => {
         e.preventDefault();
-        fetch(form.action, {
-          method: "POST",
-          body: new FormData(document.getElementById("sheetdb-form"))
-        })
-          .then((response) => response.json())
-          .then((html) => {
-            window.location.href = "success.html";
-            form.reset();
+
+        form.style.display = "none";
+
+        processingDiv.style.display = "block";
+
+        fetch(scriptURL, { method: "POST", body: new FormData(form) })
+          .then((response) => {
+            if (response.ok) {
+              window.location.href = "success.html";
+              form.reset();
+            } else {
+              throw new Error("Form submission failed");
+            }
+          })
+          .catch((error) => {
+            console.error("Error!", error.message);
+            alert("An error occurred. Please try again.");
+            form.style.display = "block";
+            processingDiv.style.display = "none";
           });
       });
     </script>
